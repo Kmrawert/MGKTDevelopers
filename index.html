@@ -12,59 +12,59 @@
             
 </head>
 <body> 
-    <div class="container">
-<!-- Title here -->
-        <div class="row">
-            <div class="col s2"></div>
-            <div class="col s8">
-                <div id="title"><h3>Green Screen</h3></div>
-            </div>
-            <div class="col s2"></div>
-        </div>
-        <div class="row">
-                <div class="col s2"></div>
+    <div class="header" style="margin-top: -27px;">
+            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover;">
                 <div class="col s8">
-                    <div id="about"><p>How green is your city?</p></div>
+                    <h3 style="color: white; width: 75%; margin-right: 0px;">How Green is Your US City?</h3>
                 </div>
-                <div class="col s2"></div>
+                <div class="cityState col s4" >
+                    <div class="input-field">
+                        <input placeholder="City Name" id="city_input" type="text" class="validate">
+                        <label for="city_input">City</label>
+                    </div>
+                    <div class="input-field">
+                        <input placeholder="City Name" id="city_input" type="text" class="validate">
+                        <label for="city_input">City</label>
+                    </div>
             </div>
+            </div>
+        </div>
+    <div class="container">
 <!-- content here -->
         <div class="row">
-            <div class="col s1"></div>
-            <div class="col s5">
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose your location</a>
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">city one</a></li>
-                    <li><a href="#!">city two</a></li>
-                    <li><a href="#!">city three</a></li>
-                </ul>
+            <div class="col s6">
+                <!-- this is the content area/box -->
+                <div id="cityResult" style="border: 2px solid lightgrey; border-radius: 10px;">
+                    <!-- Gail, this is the city header where we need your awesome pics and city name displayed -->
+                    <div id="cityHeader" style="height: 150px;">
+                        <div id="cityName">
+                            <!-- This is where the city name text will go? -->
+                        </div>
+                        <div id="stateName">
+                                <!-- This is where the state name text will go? -->
+                            </div>
+                        <div id="cityContent">
+                            <div id="polutionScore"></div>
+                            <div id="humidityScore"></div>
+                            <div id="polutionScore"></div>
+                            <div id="tempLowAvg"></div>
+                            <div id="tempHighAvg"></div> 
+                            <div id="elecSpend"></div>  
+                            <div id="gasSpend"></div> 
+                            <div id="deiselSpend"></div>
+                            <!-- LEGEND Here Polution Score (Michelle) -->
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="col s5"></div>
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose your comparison location</a>
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#!">city one</a></li>
-                    <li><a href="#!">city two</a></li>
-                    <li><a href="#!">city three</a></li>
-                </ul>
-            <div class="col s1"></div>
         </div>
-        <div class="row">
-            <div class="col s1"></div>
-            <div class="col s5">
-                <p>Table #1</p> 
-            </div>
-            <div class="col s5">
-                <p>Table #2</p> 
-            </div>
-            <div class="col s1"></div>
-        </div>
+        
 <!-- Footer here -->
         <div class="row">
-            <div class="col s2"></div>
-            <div class="col s8">
+            <div class="col s12">
                 <div id="footer"><p>MGKT Developers</p></div>
             </div>
-            <div class="col s2"></div>
         </div>
     
     </div>
