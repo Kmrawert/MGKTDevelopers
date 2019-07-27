@@ -12,7 +12,7 @@
         var API_key = "13148120-b768c83f14822b5847fe811cf";
 
         var queryURL = "https://pixabay.com/api/?key=" + API_key +
-        "&q=" + MyCities + "&image_type=photo&limit=1";
+        "&q=" + MyCities + "&image_type&per_page=3";
 
         // var queryURL = "https://pixabay.com/api/?q=" +
         // MyCities + "&api_key=13148120-b768c83f14822b5847fe811cf&limit=10";
@@ -64,7 +64,7 @@
             // console.log("h3 - each loop cycle is " + h3);
 
             // create a img tag here
-            var myImg = $("<img>");
+            var myImg = $("<img>").attr('class', 'cityImage').css('maxWidth', '350px', 'display', 'inline');
 
             // Setting the src attribute of the img to a property pulled off the result item
 
