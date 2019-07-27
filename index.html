@@ -5,20 +5,82 @@
         Project #1
     </title>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-    <!-- add google fonts here -->
-
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             
 </head>
 <body> 
-
-
-
-
-
+    <div class="container">
+<!-- Title here -->
+        <div class="row">
+            <div class="col s2"></div>
+            <div class="col s8">
+                <div id="title"><h3>Green Screen</h3></div>
+            </div>
+            <div class="col s2"></div>
+        </div>
+        <div class="row">
+                <div class="col s2"></div>
+                <div class="col s8">
+                    <div id="about"><p>How green is your city?</p></div>
+                </div>
+                <div class="col s2"></div>
+            </div>
+<!-- content here -->
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s5">
+                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose your location</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">city one</a></li>
+                    <li><a href="#!">city two</a></li>
+                    <li><a href="#!">city three</a></li>
+                </ul>
+            </div>
+            <div class="col s5"></div>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose your comparison location</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">city one</a></li>
+                    <li><a href="#!">city two</a></li>
+                    <li><a href="#!">city three</a></li>
+                </ul>
+            <div class="col s1"></div>
+        </div>
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s5">
+                <p>Table #1</p> 
+            </div>
+            <div class="col s5">
+                <p>Table #2</p> 
+            </div>
+            <div class="col s1"></div>
+        </div>
+<!-- Footer here -->
+        <div class="row">
+            <div class="col s2"></div>
+            <div class="col s8">
+                <div id="footer"><p>MGKT Developers</p></div>
+            </div>
+            <div class="col s2"></div>
+        </div>
+    
+    </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src ="assets/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $('.dropdown-trigger').dropdown();
+        
+</script>
 </body>
 </html>

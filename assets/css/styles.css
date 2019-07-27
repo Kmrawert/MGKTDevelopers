@@ -1,0 +1,23 @@
+#title {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    margin-bottom: -20px;
+}
+#about {
+    text-align: center;
+    margin-top: -20px;
+}
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+#footer {
+    text-align: center;
+}
+/* 
+nav bar to be blue
+nav bar buttons to be centered/equally spaced on bar
+
+center footer
+*/
