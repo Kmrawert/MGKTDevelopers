@@ -19,7 +19,7 @@
                 </div>
                 <div class="cityState col s4" style="width: 33%; display: inline-block; margin-top: 50px;" >
                     <div class="input-field">
-                        <input placeholder="City" id="city_input" type="text" class="validate">
+                        <input placeholder="City" id="city_input"  type="text" class="validate">
                         <label for="city_input">City</label>
                     </div>
                     <div class="input-field">
@@ -33,11 +33,10 @@
     <div class="container" style="margin-top: 20px;">
 <!-- content here -->
         <div class="row">
-            <div class="col s6">
+            <div class="col s6 card" id="cityResult">
                 <!-- this is the content area/box -->
-                <div class="card" id="cityResult">
                     <!-- Gail, this is the city header where we need your awesome pics and city name displayed -->
-                    <div class="card-image" style="height: 150px;">
+                    <div class="card-image">
                         <img id="cityImage">
                         <span class="card-title" id="cityName">
                             <!-- This is where the city name text will go? -->
@@ -59,7 +58,7 @@
                     </div>
 
                 </div>
-            </div>
+            
         </div>
         
 <!-- Footer here -->
@@ -73,6 +72,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src ="assets/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+<script src="assets/js/transport.js"></script>
 </body>
 </html>
