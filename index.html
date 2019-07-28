@@ -13,11 +13,11 @@
 </head>
 <body> 
     <div class="header" style="margin-top: -27px;">
-            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover;">
-                <div class="col s8">
-                    <h3 style="color: white; width: 75%; margin-right: 0px;">How Green is Your US City?</h3>
+            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover; background-color: springgreen; background-blend-mode: multiply;">
+                <div class="col s8" style="width: 65%; display: inline-block;">
+                    <h3 style="color: white; margin-right: 0px;">How Green is Your US City?</h3>
                 </div>
-                <div class="cityState col s4" >
+                <div class="cityState col s4" style="width: 33%; display: inline-block; margin-top: 50px;" >
                     <div class="input-field">
                         <input placeholder="City Name" id="city_input" type="text" class="validate">
                         <label for="city_input">City</label>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col s6">
                 <!-- this is the content area/box -->
-                <div id="cityResult" style="border: 2px solid lightgrey; border-radius: 10px;">
+                <div class="card" id="cityResult">
                     <!-- Gail, this is the city header where we need your awesome pics and city name displayed -->
                     <div id="cityHeader" style="height: 150px;">
                         <div id="cityName">
