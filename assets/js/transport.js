@@ -5,10 +5,13 @@ $("#submitCity").on("click", function() {
     // In this case, the "this" keyword refers to the button that was clicked
     var city = $('#city_input').val().trim();
     var state = $('#state_input').val().trim();
-    
+    var cityTitle = $('#cityName').text(city);
+    var stateTitle = $('#stateName').text(state);
+
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
-
+    newCard.append(cityTitle, stateTitle);
+    
     row.prepend(newCard);
     
     console.log(city);
