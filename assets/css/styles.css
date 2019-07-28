@@ -22,12 +22,11 @@ input:focus {
 .input-field>label {
     color: white !important;
 }
-#city_input {
+#city_input, #state_input {
     color: white;
+    border-bottom: 1px solid white;
 }
-#state_input {
-    color: white;
-}
+
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar
