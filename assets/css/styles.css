@@ -15,11 +15,17 @@ body {
     text-align: center;
 }
 input:focus {
-    border-bottom: 1px solid red !important;
-    box-shadow: 0 1px 0 0 red !important;
+    border-bottom: 1px solid greenyellow !important;
+    box-shadow: 0 1px 0 0 greenyellow !important;
 }
 .input-field>label {
     color: white !important;
+}
+#city_input {
+    color: white;
+}
+#state_input {
+    color: white;
 }
 /* 
 nav bar to be blue
