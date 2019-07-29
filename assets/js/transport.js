@@ -1,4 +1,3 @@
-var row = $('.row');
 
 // Event listener for all button elements
 $("#submitCity").on("click", function() {
