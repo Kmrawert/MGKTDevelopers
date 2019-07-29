@@ -9,11 +9,27 @@ h3 {
 }
 body {
     font-family: 'Quicksand', sans-serif;
+    background-color: #e1e1e1;
 }
 
 #footer {
     text-align: center;
 }
+input:focus {
+    border-bottom: 1px solid greenyellow !important;
+    box-shadow: 0 1px 0 0 greenyellow !important;
+}
+.input-field>label {
+    color: white !important;
+}
+#city_input, #state_input {
+    color: white;
+    border-bottom: 1px solid white;
+}
+.card-image {
+    height: 150px;
+}
+
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar

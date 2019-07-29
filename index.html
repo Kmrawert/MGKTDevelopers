@@ -13,36 +13,38 @@
 </head>
 <body> 
     <div class="header" style="margin-top: -27px;">
-            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover;">
-                <div class="col s8">
-                    <h3 style="color: white; width: 75%; margin-right: 0px;">How Green is Your US City?</h3>
+            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover; background-color: springgreen; background-blend-mode: multiply; background-position-y: center;">
+                <div class="col s8" style="width: 65%; display: inline-block;">
+                    <h3 style="color: white; margin-right: 0px;">How Green is Your US City?</h3>
                 </div>
-                <div class="cityState col s4" >
+                <div class="cityState col s4" style="width: 33%; display: inline-block; margin-top: 50px;" >
                     <div class="input-field">
-                        <input placeholder="City Name" id="city_input" type="text" class="validate">
+                        <input placeholder="City" id="city_input"  type="text" class="validate">
                         <label for="city_input">City</label>
                     </div>
                     <div class="input-field">
-                        <input placeholder="City Name" id="city_input" type="text" class="validate">
-                        <label for="city_input">City</label>
+                        <input placeholder="State" id="state_input" type="text" class="validate">
+                        <label for="city_input">State</label>
+                        <a id="submitCity" class="waves-effect waves-light btn" style="background-color: greenyellow; color: black; font-weight: 600">Submit</a>
                     </div>
             </div>
             </div>
         </div>
-    <div class="container">
+    <div class="container" style="margin-top: 20px;">
 <!-- content here -->
         <div class="row">
-            <div class="col s6">
+            <div class="col s6 card" id="cityResult" style="display: none;">
                 <!-- this is the content area/box -->
-                <div id="cityResult" style="border: 2px solid lightgrey; border-radius: 10px;">
                     <!-- Gail, this is the city header where we need your awesome pics and city name displayed -->
-                    <div id="cityHeader" style="height: 150px;">
-                        <div id="cityName">
+                    <div class="card-image">
+                        <img id="cityImage">
+                        <div class="card-title" id="cityName">
                             <!-- This is where the city name text will go? -->
                         </div>
-                        <div id="stateName">
+                        <span id="stateName">
                                 <!-- This is where the state name text will go? -->
-                            </div>
+                        </span>
+                    </div>
                         <div id="cityContent">
                             <div id="polutionScore"></div>
                             <div id="humidityScore"></div>
@@ -57,7 +59,7 @@
                     </div>
 
                 </div>
-            </div>
+            
         </div>
         
 <!-- Footer here -->
@@ -71,16 +73,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src ="assets/js/app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
-  });
-
-  // Or with jQuery
-
-  $('.dropdown-trigger').dropdown();
-        
-</script>
+<script src="assets/js/transport.js"></script>
 </body>
 </html>
