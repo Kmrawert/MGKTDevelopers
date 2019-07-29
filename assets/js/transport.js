@@ -25,8 +25,7 @@ $("#submitCity").on("click", function() {
    
 
 
-    var queryURL = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx"
-                    + city
+    var queryURL = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
       $.ajax({
         url: queryURL,
         method: "GET"
