@@ -1,4 +1,5 @@
 var row = $('.row');
+var r;
 
 // Event listener for all button elements 
 $("#submitCity").on("click", function() {
@@ -22,7 +23,7 @@ $("#submitCity").on("click", function() {
     
     var searchPop = function(city) {
 
-   
+     
 
 
     var queryURL = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
