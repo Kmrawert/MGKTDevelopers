@@ -1,6 +1,6 @@
 var row = $('.row');
 
-// Event listener for all button elements
+// Event listener for all button elements 
 $("#submitCity").on("click", function() {
     // In this case, the "this" keyword refers to the button that was clicked
     var city = $('#city_input').val().trim();
