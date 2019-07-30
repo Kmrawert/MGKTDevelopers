@@ -16,8 +16,8 @@ $("#submitCity").on("click", function() {
     
     row.prepend(newCard);
     
-    console.log(city);
-    console.log(state);
+    console.log(response);
+    
     
     var searchPop = function(city) {
 
@@ -34,7 +34,8 @@ $("#submitCity").on("click", function() {
             createRow(response);
           // Storing an array of results in the results variable
           var results = response.data;
-            console.log(results)});
+            console.log(results)
+        });
     
     }
 

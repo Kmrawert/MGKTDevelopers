@@ -33,6 +33,13 @@ input:focus {
     height: 150px;
 }
 
+.card-title {
+    display: inline;
+    padding-right: 5px;
+}
+#stateName {
+    font-size: 24px;
+}
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar
