@@ -12,7 +12,7 @@ $("#submitCity").on("click", function() {
         method: "GET"
       })
       .then(function(response) {
-        var results = response.data;
+        var results = response.data.forecasts[0].aqius;
           console.log(results)});
     
     }
