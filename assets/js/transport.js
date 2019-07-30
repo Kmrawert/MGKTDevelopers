@@ -21,7 +21,7 @@ $("#submitCity").on("click", function() {
     console.log(response);
     
     
-    var searchPop = function(city) {
+    var searchCity = function(city) {
 
      
 
@@ -41,4 +41,4 @@ $("#submitCity").on("click", function() {
     
     }
 
-    searchPop();})
+    searchCity();})

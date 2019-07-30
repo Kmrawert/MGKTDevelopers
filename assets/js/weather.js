@@ -54,7 +54,7 @@ function handleSubmit(event) {
           </div>
       
             `
-          return html
+          return html;
         }
   
       })
