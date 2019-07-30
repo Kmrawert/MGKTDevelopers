@@ -47,12 +47,12 @@ $("button").on("click", function() {
           var temp_f = results.temp_f
     
          
-          $("#weather").html(renderMyThing(results))
+          $("#tempLowAvg").html(renderMyThing(results))
     
     
           function renderMyThing(response) {
             var html = `
-              <div id="weather">
+              <div>
               <h1>${results.location.name} </h1>
               ${results.current.condition.text} <br>
               ${results.current.temp_f} <br>
