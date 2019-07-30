@@ -1,14 +1,10 @@
-// Event listener for all button elements
 $("button").on("click", function() {
-    // In this case, the "this" keyword refers to the button that was clicked
     var state = $(this).attr("data-city");
     var searchPop = function(city) {
+    var apiKey = "3204bdc9-d215-465a-bb7b-132b32d458d3"
+    var stateName = Missouri 
 
-   
-
-
-    var queryURL = "https://public.opendatasoft.com/api/records/1.0/search/?dataset=1000-largest-us-cities-by-population-with-geographic-coordinates&sort=-rank&facet=city&facet=state"
-                    + city
+    var queryURL = "http://api.airvisual.com/v2/cities?state=" + stateName + "&country=USA" "&key=" + apiKey
       $.ajax({
         url: queryURL,
         method: "GET"
