@@ -18,7 +18,7 @@ $("#submitCity").on("click", function() {
     
     row.prepend(newCard);
     
-    console.log(response);
+    
     
     
     var searchCity = function(city) {
