@@ -17,4 +17,3 @@ $("#submitCity").on("click", function() {
     
     }
 
-    searchPollution();})

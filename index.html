@@ -25,7 +25,7 @@
                     </div>
                     <!-- State Field -->
                     <div class="input-field">
-                        <input placeholder="State" id="state_input" type="text" class="validate">
+                        <input placeholder="State" id="state_input" type="text" class="validate" maxlength="2">
                         <label for="city_input">State</label>
                     <!-- Submit Button? -->
                         <a id="submitCity" class="waves-effect waves-light btn" style="background-color: greenyellow; color: black; font-weight: 600">Submit</a>
@@ -35,18 +35,20 @@
         </div>
     <div class="container" style="margin-top: 20px;">
 <!-- content here -->
-        <div class="row">
-            <div class="col s6 card" id="cityResult" style="display: none;">
+        <div class="row" style="display: none;">
+            <div class="col s6 card" id="cityResult" >
                 <!-- this is the content area/box -->
                     <!-- Gail, this is the city header where we need your awesome pics and city name displayed -->
                     <div class="card-image">
                         <img id="cityImage">
-                        <div class="card-title" id="cityName">
-                            <!-- This is where the city name text will go? -->
-                        </div>
-                        <span id="stateName">
-                                <!-- This is where the state name text will go? -->
-                        </span>
+                        <div class="wrapper" style="width: 80%; margin-left: 10%;">
+                            <div class="card-title" id="cityName">
+                                <!-- This is where the city name text will go? -->
+                            </div>
+                            <span id="stateName">
+                                    <!-- This is where the state name text will go? -->
+                            </span>
+                        </div>  
                     </div>
                         <div id="cityContent">
                             <div id="polutionScore"></div>
@@ -57,11 +59,16 @@
                             <div id="elecSpend"></div>  
                             <div id="gasSpend"></div> 
                             <div id="deiselSpend"></div>
+
                             <!-- LEGEND Here Polution Score (Michelle) -->
                         </div>
                     </div>
 
                 </div>
+            
+        </div>
+
+        <div id= "weather" >
             
         </div>
         
@@ -78,5 +85,6 @@
 </script><script type="text/javascript" src ="assets/js/app.js"></script>
 <!-- <script type="text/javascript" src ="assets/js/weather.js"></script> -->
 <script src="assets/js/transport.js"></script>
+<script src="assets/js/weather.js"></script>
 </body>
 </html>
