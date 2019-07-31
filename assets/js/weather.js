@@ -1,11 +1,11 @@
 function handleSubmit(event) {
-    console.log(event)
-    var city = $("#city_input").val()
-    console.log(city)
-    var state = $("#state_input").val()
-    console.log(state)
+    console.log(event);
+    var city = $("#city_input").val();
+    console.log(city);
+    var state = $("#state_input").val();
+    console.log(state);
   
-  getWeather(city)
+  getWeather(city);
   
   
   }
