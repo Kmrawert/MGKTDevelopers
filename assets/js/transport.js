@@ -13,14 +13,22 @@ $("#submitCity").on("click", function() {
     var stateTitle = $('#stateName').text(state);
 
     // var populationResult = $('#populationScore').text(population);
-    
-
-    newCard = $('<div>');
+    function handleResult(weather){
+      console.log(weather);
+      var weatherHTML = renderWeather(weather);
+      console.log(renderWeather(weather));
+      newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<label>').text('Population: ');
-    newCard.append(cityTitle, stateTitle, popLabel);
+    var weatherVal = $('<div>').html(weatherHTML);
+    newCard.append(cityTitle, stateTitle, popLabel, weatherVal);
     
     row.prepend(newCard);
+    }
+   getWeather(city).then(handleResult);
+    
+
+    
     
     
     
