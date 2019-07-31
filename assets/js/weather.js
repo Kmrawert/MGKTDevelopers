@@ -7,25 +7,19 @@ function handleSubmit(event) {
 
     getWeather(city);
 
-
 }
+
 
 //$("#submitCity").click(handleSubmit)
 
 function getWeather(location) {
-
-
-
     // Constructing a queryURL using the animal name
     var queryURL = "http://api.apixu.com/v1/current.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
     // var queryURL = "http://api.apixu.com/v1/history.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
 
-
-
     return $.ajax({
         url: queryURL,
         method: "GET"
-
     })
         // After data comes back from the request
         .then(function (response) {
@@ -33,7 +27,6 @@ function getWeather(location) {
 
             var results = response;
             console.log(results);
-
 
             var locationName = results.location.name
             var condition = results.current.condition;
@@ -46,17 +39,10 @@ function getWeather(location) {
                 condition,
                 temp_f,
                 humidity
-
             }
-
-
             $("#cityResult").attr("display", "block")
             $("#humidityScore").html(renderMyThing(results))
-
-
-
         })
-
 }
 function renderWeather(weather) {
     var html = `
@@ -67,14 +53,9 @@ function renderWeather(weather) {
            
             <img src="https:${weather.condition.icon}"> <br>
           </div>
-      
             `
     return html;
 }
-
-
   // getWeather();
 
     //   })
-
-    // 
