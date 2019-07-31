@@ -5,39 +5,56 @@ $("#submitCity").on("click", function() {
     // In this case, the "this" keyword refers to the button that was clicked
     var city = $('#city_input').val().trim();
     var state = $('#state_input').val().trim();
+    console.log(city);
+    console.log(state);
     // var population = $('#populationScore').val().trim();
-    var cityTitle = $('#cityName').text(city);
+    var cityTitle = $('#cityName').text(city + ',');
     var stateTitle = $('#stateName').text(state);
-    // var populationResult = $('#populationScore').text(population);
-    
 
-    newCard = $('<div>');
+    // var populationResult = $('#populationScore').text(population);
+    function handleResult(weather){
+      console.log(weather);
+      var weatherHTML = renderWeather(weather);
+      console.log(renderWeather(weather));
+      newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
-    newCard.append(cityTitle, stateTitle);
+    var popLabel = $('<label>').text('Population: ');
+    var weatherVal = $('<div>').html(weatherHTML);
+    newCard.append(cityTitle, stateTitle, popLabel, weatherVal);
     
     row.prepend(newCard);
-    
-    console.log(response);
-    
-    
-    var searchPop = function(city) {
-
-     
-
-
-    var queryURL = "https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        .then(function(response) {
-            
-            createRow(response);
-          // Storing an array of results in the results variable
-          var results = response.data;
-            console.log(results)
-        });
-    
     }
+   getWeather(city).then(handleResult);
+    
 
-    searchPop();})
+    
+    
+    
+    
+    
+  function searchCityPop(city) {
+      var queryURL = "https://developer.nrel.gov/api/cleap/v1/energy_expenditures_and_ghg_by_sector?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
+      //var queryURL = "https://developer.nrel.gov/api/cleap/v1/energy_expenditures_and_ghg_by_sector?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function(response) {
+              
+              //createRow(response);
+            // Storing an array of results in the results variable
+            var results = response.data;
+              console.log(response);
+              //var cityPop = response.result.Chicago.residential.total_pop; 
+              var pop = response.result[city].residential.total_pop;
+              console.log(pop);
+              //var popInput = $('#populationScore').text(pop);
+              var popInput = $('<div>').addClass('populationScore').text(pop);
+              newCard.append(popInput);
+              console.log(cityPop);
+              
+          });
+      }
+
+    searchCityPop(city);})
+
