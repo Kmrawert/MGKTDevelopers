@@ -17,3 +17,4 @@ $("#submitCity").on("click", function() {
     
     }
 
+});
