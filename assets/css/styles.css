@@ -24,6 +24,12 @@ body {
     margin-left: 20px !important;
     margin-right: 20px !important;
 }
+.row .col.s6:nth-child(even) {
+    margin-left: 5%;
+}
+.col.s6 {
+    width: 45% !important;
+}
 .resultLabel{
     padding-left: 10px;
 }
