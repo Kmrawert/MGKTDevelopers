@@ -39,7 +39,6 @@ input:focus {
 .card-title {
     display: inline;
     padding-right: 5px;
-
 }
 #stateName {
     font-size: 24px;
@@ -47,7 +46,7 @@ input:focus {
 .col {
     text-align: center;
 }
-.populationScore, .weather, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
+.populationScore, .weather, .labelResult, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
     text-align: left;
 }
 /* 

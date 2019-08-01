@@ -18,18 +18,13 @@ $("#submitCity").on("click", function() {
       console.log(renderWeather(weather));
       newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
-    var popLabel = $('<label>').text('Population: ');
+    var popLabel = $('<label>').text('Population: ').addClass('labelResult');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     newCard.append(cityTitle, stateTitle, '<br>', popLabel, weatherVal);
     
     row.prepend(newCard);
     }
    getWeather(city).then(handleResult);
-    
-
-    
-    
-    
     
     
   function searchCityPop(city) {
