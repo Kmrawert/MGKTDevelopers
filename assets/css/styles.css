@@ -21,6 +21,10 @@ body {
 #footer {
     text-align: center;
 }
+div.cityState.col.s4 {
+    width: 80%;
+    margin: auto;
+}
 input:focus {
     border-bottom: 1px solid greenyellow !important;
     box-shadow: 0 1px 0 0 greenyellow !important;
@@ -54,9 +58,19 @@ input:focus {
 .resultLab {
     font-weight: 700;
 }
+div#heading.col.s8 {
+    width: 100%; 
+    display: inline-block;
+}
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar
 
 center footer
 */
+
+@media only screen and (max-width: 500px) {
+    div#heading.col.s8 {
+        width: 100% !important;
+    }
+}
