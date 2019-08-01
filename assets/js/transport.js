@@ -79,7 +79,36 @@ $("#submitCity").on("click", function () {
         }
       }
     )};
+
+    function getGasDieselSpend(city) {
+      var queryURL = "https://developer.nrel.gov/api/cleap/v1/gasoline_and_diesel_use?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
+      return $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        .then(function (response) {
+          var results = response.data;
+          var cityDieselUse = response.result[city].city_fuel_use.diesel_gal;
+          var cityGasUse = response.result[city].city_fuel_use.gas_gal;
+          var ntlDieselAvg = response.result[city].natl_avg_diesel_gal;
+          var ntlGasAvg = response.result[city].natl_avg_gas_gal;
+          console.log(results);
   
+          console.log(cityDieselUse);
+          console.log(cityGasUse);
+          console.log(ntlDieselAvg);
+          console.log(ntlGasAvg);
+          
+  
+          return {
+            cityDieselUse,
+            cityGasUse,
+            ntlDieselAvg,
+            ntlGasAvg
+          }
+        }
+      )};
+  getGasDieselSpend(city);
   getVMT(city);
   Promise.all([
 
