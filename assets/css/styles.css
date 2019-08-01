@@ -44,6 +44,12 @@ input:focus {
 #stateName {
     font-size: 24px;
 }
+.col {
+    text-align: center;
+}
+.populationScore, .weather, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
+    text-align: left;
+}
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar

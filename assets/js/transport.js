@@ -19,8 +19,8 @@ $("#submitCity").on("click", function() {
       newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<label>').text('Population: ');
-    var weatherVal = $('<div>').html(weatherHTML);
-    newCard.append(cityTitle, stateTitle, popLabel, weatherVal);
+    var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
+    newCard.append(cityTitle, stateTitle, '<br>', popLabel, weatherVal);
     
     row.prepend(newCard);
     }
@@ -47,6 +47,11 @@ $("#submitCity").on("click", function() {
               console.log(response);
               //var cityPop = response.result.Chicago.residential.total_pop; 
               var pop = response.result[city].residential.total_pop;
+              var ghgCommerical = response.result[city].commercial.gas_lb_ghg;
+              var ghgResidential = response.result[city].residential.gas_lb_ghg;
+              var ghgIndustrial = response.result[city].industrial.gas_lb_ghg;
+              var ghg = ghgCommerical + ghgResidential + ghgIndustrial;
+              console.log(ghg);
               console.log(pop);
               //var popInput = $('#populationScore').text(pop);
               var popInput = $('<div>').addClass('populationScore').text(pop);
