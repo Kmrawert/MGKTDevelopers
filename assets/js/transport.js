@@ -11,7 +11,7 @@ $("#submitCity").on("click", function () {
   var cityTitle = $('#cityName').text(city + ',');
   var stateTitle = $('#stateName').text(state);
 
-  // var populationResult = $('#populationScore').text(population);
+  // returns weather function and population results and places in new card div
   function handleResult(weather, popObj) {
     console.log(weather);
     var weatherHTML = renderWeather(weather);
@@ -20,6 +20,7 @@ $("#submitCity").on("click", function () {
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
+    
     newCard.append(cityTitle, stateTitle, '<br>', popLabel, weatherVal);
 
     row.prepend(newCard);
@@ -55,6 +56,31 @@ $("#submitCity").on("click", function () {
 
       });
   }
+  function getVMT(city) {
+    var queryURL = "https://developer.nrel.gov/api/cleap/v1/city_vmt_estimates?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
+    return $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function (response) {
+        var results = response.data;
+        var cityVMT = response.result[city].city_vmt_estimate;
+        var ntlAvgEst = response.result[city].natl_avg_vmt_estimate;
+        var ntlPerCap = response.result[city].natl_per_capita_vmt_estimate;
+        console.log(results);
+
+        console.log(cityVMT);
+        console.log(ntlAvgEst);
+        console.log(ntlPerCap);
+        
+
+        return {
+          cityVMT
+        }
+      }
+    )};
+  
+  getVMT(city);
   Promise.all([
 
     getWeather(city),
@@ -63,5 +89,6 @@ $("#submitCity").on("click", function () {
   ]).then(function (response){
     handleResult(response[0], response[1])
   })
+  
 })
 

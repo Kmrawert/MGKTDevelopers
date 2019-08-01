@@ -49,6 +49,9 @@ input:focus {
 .populationScore, .weather, .labelPop, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
     text-align: left;
 }
+.resultLab {
+    font-weight: 700;
+}
 /* 
 nav bar to be blue
 nav bar buttons to be centered/equally spaced on bar
