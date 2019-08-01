@@ -46,7 +46,7 @@ input:focus {
 .col {
     text-align: center;
 }
-.populationScore, .weather, .labelResult, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
+.populationScore, .weather, .labelPop, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
     text-align: left;
 }
 /* 
