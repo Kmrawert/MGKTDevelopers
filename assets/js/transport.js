@@ -3,6 +3,8 @@ var row = $('.row');
 // Event listener for all button elements 
 $("#submitCity").on("click", function () {
   // In this case, the "this" keyword refers to the button that was clicked
+  
+  // var cityImg = $('#cityImage');
   var city = $('#city_input').val().trim();
   var state = $('#state_input').val().trim();
   console.log(city);
@@ -16,6 +18,7 @@ $("#submitCity").on("click", function () {
     console.log(weather);
     var weatherHTML = renderWeather(weather);
     console.log(renderWeather(weather));
+    
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
