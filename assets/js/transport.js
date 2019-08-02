@@ -22,11 +22,11 @@ $("#submitCity").on("click", function () {
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
-    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT).addClass('labelPop');
-    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse).addClass('labelPop');
-    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.natl_avg_diesel_gal).addClass('labelPop');
-    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse).addClass('labelPop');
-    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.natl_avg_diesel_gal).addClass('labelPop');
+    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop');
+    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop');
+    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.ntlGasAvg + ' gallons').addClass('labelPop');
+    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop');
+    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.ntlDieselAvg + ' gallons').addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
     newCard.append(cityTitle, stateTitle, '<br>', popLabel, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
@@ -46,7 +46,6 @@ $("#submitCity").on("click", function () {
 
         //createRow(response);
         // Storing an array of results in the results variable
-        var results = response.data;
         console.log(response);
         //var cityPop = response.result.Chicago.residential.total_pop; 
         var pop = response.result[city].residential.total_pop;
@@ -71,11 +70,9 @@ $("#submitCity").on("click", function () {
       method: "GET"
     })
       .then(function (response) {
-        var results = response.data;
         var cityVMT = response.result[city].city_vmt_estimate;
         var ntlAvgEst = response.result[city].natl_avg_vmt_estimate;
         var ntlPerCap = response.result[city].natl_per_capita_vmt_estimate;
-        console.log(results);
 
         console.log(cityVMT);
         console.log(ntlAvgEst);
@@ -95,17 +92,11 @@ $("#submitCity").on("click", function () {
         method: "GET"
       })
         .then(function (response) {
-          var results = response.data;
           var cityDieselUse = response.result[city].city_fuel_use.diesel_gal;
           var cityGasUse = response.result[city].city_fuel_use.gas_gal;
           var ntlDieselAvg = response.result[city].natl_avg_diesel_gal;
           var ntlGasAvg = response.result[city].natl_avg_gas_gal;
-          console.log(results);
   
-          console.log(cityDieselUse);
-          console.log(cityGasUse);
-          console.log(ntlDieselAvg);
-          console.log(ntlGasAvg);
           
   
           return {
