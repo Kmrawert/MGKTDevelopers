@@ -22,11 +22,11 @@ $("#submitCity").on("click", function () {
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
-    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT).addClass('labelVMT');
-    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse).addClass('cityGas');
-    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.natl_avg_diesel_gal).addClass('ntlGas');
-    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse).addClass('cityDiesel');
-    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.natl_avg_diesel_gal).addClass('ntlDeisel');
+    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT).addClass('labelPop');
+    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse).addClass('labelPop');
+    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.natl_avg_diesel_gal).addClass('labelPop');
+    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse).addClass('labelPop');
+    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.natl_avg_diesel_gal).addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
     newCard.append(cityTitle, stateTitle, '<br>', popLabel, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
