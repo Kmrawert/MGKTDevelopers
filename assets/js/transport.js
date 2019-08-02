@@ -14,7 +14,7 @@ $("#submitCity").on("click", function () {
   var stateTitle = $('#stateName').text(state);
 
   // returns weather function and population results and places in new card div
-  function handleResult(weather, popObj) {
+  function handleResult(gas, cityVMT, weather, popObj) {
     console.log(weather);
     var weatherHTML = renderWeather(weather);
     console.log(renderWeather(weather));
@@ -22,9 +22,14 @@ $("#submitCity").on("click", function () {
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
+    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT).addClass('labelVMT');
+    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse).addClass('cityGas');
+    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.natl_avg_diesel_gal).addClass('ntlGas');
+    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse).addClass('cityDiesel');
+    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.natl_avg_diesel_gal).addClass('ntlDeisel');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
-    newCard.append(cityTitle, stateTitle, '<br>', popLabel, weatherVal);
+    newCard.append(cityTitle, stateTitle, '<br>', popLabel, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
 
     row.prepend(newCard);
   }
@@ -111,16 +116,15 @@ $("#submitCity").on("click", function () {
           }
         }
       )};
-  getGasDieselSpend(city);
-  getVMT(city);
+  
   Promise.all([
-
+    getGasDieselSpend(city),
+    getVMT(city),
     getWeather(city),
     // .then(handleResult);
     searchCityPop(city)
   ]).then(function (response){
-    handleResult(response[0], response[1])
+    handleResult(response[0], response[1], response[2], response[3])
   })
   
 })
-
