@@ -48,7 +48,7 @@ $("#submitCity").on("click", function () {
         // Storing an array of results in the results variable
         console.log(response);
         //var cityPop = response.result.Chicago.residential.total_pop; 
-        var pop = response.result[city].residential.total_pop;
+        var pop = response.result[city].residential.total_pop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var ghgCommerical = response.result[city].commercial.gas_lb_ghg;
         var ghgResidential = response.result[city].residential.gas_lb_ghg;
         var ghgIndustrial = response.result[city].industrial.gas_lb_ghg;
@@ -70,7 +70,7 @@ $("#submitCity").on("click", function () {
       method: "GET"
     })
       .then(function (response) {
-        var cityVMT = response.result[city].city_vmt_estimate;
+        var cityVMT = response.result[city].city_vmt_estimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var ntlAvgEst = response.result[city].natl_avg_vmt_estimate;
         var ntlPerCap = response.result[city].natl_per_capita_vmt_estimate;
 
@@ -92,11 +92,10 @@ $("#submitCity").on("click", function () {
         method: "GET"
       })
         .then(function (response) {
-          var cityDieselUse = response.result[city].city_fuel_use.diesel_gal;
-          var cityGasUse = response.result[city].city_fuel_use.gas_gal;
-          var ntlDieselAvg = response.result[city].natl_avg_diesel_gal;
-          var ntlGasAvg = response.result[city].natl_avg_gas_gal;
-  
+          var cityDieselUse = response.result[city].city_fuel_use.diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          var cityGasUse = response.result[city].city_fuel_use.gas_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          var ntlDieselAvg = response.result[city].natl_avg_diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          var ntlGasAvg = response.result[city].natl_avg_gas_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           
   
           return {
