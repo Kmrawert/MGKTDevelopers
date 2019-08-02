@@ -1,4 +1,10 @@
-// this function displays a city or default image
+/**
+ * Programming assignment:  Group Project
+ * Developer:               Gail Deadwyler
+ * Date Written:            8/5/19
+ * Purpose:                 Displays a city or default image when the user hits the submit button
+ */
+
 function displayCityInfo() {
 
     
