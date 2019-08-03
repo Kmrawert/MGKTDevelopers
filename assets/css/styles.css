@@ -20,6 +20,7 @@ body {
     background-repeat: no-repeat;
     background-position-x: center; 
     background-size: cover;
+    background-position-y: 30%;
 }
 .row {
     margin-left: 20px !important;
@@ -77,6 +78,24 @@ input:focus {
 div#heading.col.s8 {
     width: 100%; 
     display: inline-block;
+}
+.good {
+    color: #00E400;
+}
+.moderate {
+    color: #FFFF00;
+}
+.unhealthSens {
+    color: #FF7E00;
+}
+.unhealthy {
+    color: #FF0000;
+}
+.veryUnhealthy {
+    color: rgb(143, 63, 151);
+}
+.hazardous {
+    color: #7E0023;
 }
 /* 
 nav bar to be blue
