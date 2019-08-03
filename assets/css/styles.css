@@ -11,15 +11,34 @@ body {
     font-family: 'Quicksand', sans-serif;
     background-color: #e1e1e1;
 }
+#headerImg {
+    background-image: url(https://www.terma.com/media/277931/header.png);
+    padding-bottom: 30px;
+    background-color: springgreen;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position-x: center; 
+}
 .row {
     margin-left: 20px !important;
     margin-right: 20px !important;
+}
+.row .col.s6:nth-child(even) {
+    margin-left: 5%;
+}
+.col.s6 {
+    width: 47.5% !important;
 }
 .resultLabel{
     padding-left: 10px;
 }
 #footer {
     text-align: center;
+}
+div.cityState.col.s4 {
+    width: 80%;
+    margin: auto;
 }
 input:focus {
     border-bottom: 1px solid greenyellow !important;
@@ -39,7 +58,8 @@ input:focus {
 .card-title {
     display: inline;
     padding-right: 5px;
-
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 #stateName {
     font-size: 24px;
@@ -47,8 +67,15 @@ input:focus {
 .col {
     text-align: center;
 }
-.populationScore, .weather, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
+.populationScore, .weather, .labelPop, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
     text-align: left;
+}
+.resultLab {
+    font-weight: 700;
+}
+div#heading.col.s8 {
+    width: 100%; 
+    display: inline-block;
 }
 /* 
 nav bar to be blue
@@ -56,3 +83,12 @@ nav bar buttons to be centered/equally spaced on bar
 
 center footer
 */
+
+@media only screen and (max-width: 500px) {
+    div#heading.col.s8 {
+        width: 100% !important;
+    }
+    .col.s6 {
+        width: 100% !important;
+    }
+}
