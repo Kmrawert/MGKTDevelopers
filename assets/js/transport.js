@@ -14,7 +14,7 @@ $("#submitCity").on("click", function () {
   var stateTitle = $('#stateName').text(state);
 
   // returns weather function and population results and places in new card div
-  function handleResult(gas, cityVMT, weather, popObj) {
+  function handleResult(gas, cityVMT, weather, popObj, pollution) {
     console.log(weather);
     var weatherHTML = renderWeather(weather);
     console.log(renderWeather(weather));
@@ -22,6 +22,11 @@ $("#submitCity").on("click", function () {
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
+
+    var pollutionScore = $('<div>').text('Air Quality Index: ')
+    var aqi = $('<strong>').text(pollution).addClass(changeTextColor(pollution))
+    pollutionScore.append(aqi)
+
     var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop');
     var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop');
     var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.ntlGasAvg + ' gallons').addClass('labelPop');
@@ -29,7 +34,7 @@ $("#submitCity").on("click", function () {
     var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.ntlDieselAvg + ' gallons').addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
-    newCard.append(cityTitle, stateTitle, '<br>', popLabel, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
+    newCard.append(cityTitle, stateTitle, '<br>', popLabel, pollutionScore, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
 
     row.prepend(newCard);
     }
@@ -115,9 +120,10 @@ $("#submitCity").on("click", function () {
     getVMT(city),
     getWeather(city),
     // .then(handleResult);
-    searchCityPop(city)
+    searchCityPop(city),
+    searchPollution(city,state)
   ]).then(function (response){
-    handleResult(response[0], response[1], response[2], response[3])
+    handleResult(response[0], response[1], response[2], response[3], response[4])
   })
   
 })
