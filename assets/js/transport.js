@@ -1,12 +1,25 @@
 var row = $('.row');
 
-// Event listener for all button elements 
-$("#submitCity").on("click", function () {
+$('#city_input').focus()
+
+
+function handleSearch() {
   // In this case, the "this" keyword refers to the button that was clicked
   
   // var cityImg = $('#cityImage');
   var city = $('#city_input').val().trim();
-  var state = $('#state_input').val().trim();
+  $('#city_input').val("")
+
+  function uppercase(string) {
+    return string.substring (0,1).toUpperCase()+string.substring (1,string.lenght) .toLowerCase ()
+  }
+
+  city = city .split(" ") .map(uppercase).join(" ");
+  console.log(city)
+
+  var state = $('#state_input').val().trim().toUpperCase();
+ $('#state_input').val("")
+
   console.log(city);
   console.log(state);
   // var population = $('#populationScore').val().trim();
@@ -126,4 +139,19 @@ $("#submitCity").on("click", function () {
     handleResult(response[0], response[1], response[2], response[3], response[4])
   })
   
+}
+
+function handleEnteronSearch (event){
+  if (event.which === 13){
+    handleSearch()
+  }
+}
+
+// Event listener for all button elements 
+$("#submitCity").on("click",handleSearch)
+$('#state_input').on("keypress",handleEnteronSearch)
+$('#city_input').on("keypress",function (event){
+  if (event.which === 13){
+    $('#state_input').focus()
+  }
 })
