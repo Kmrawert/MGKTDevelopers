@@ -32,8 +32,11 @@ $("#submitCity").on("click", function () {
     newCard.append(cityTitle, stateTitle, '<br>', popLabel, cityVMTLabel, gasLabel, ntlGasLabel, dieselLabel, ntlDeiselLabel, weatherVal);
 
     row.prepend(newCard);
-  }
+    }
 
+    
+   getWeather(city).then(handleResult);
+    
 
   function searchCityPop(city) {
     var queryURL = "https://developer.nrel.gov/api/cleap/v1/energy_expenditures_and_ghg_by_sector?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
