@@ -32,7 +32,7 @@ function displayCityInfo() {
         if (response.totalHits === 0) {
             
 
-            $("#cityImage").attr('class', 'cityImage').css('maxWidth', '350px');
+            $("#cityImage").css('maxWidth', '350px');
 
              //default image 
              $("#cityImage").attr("src", "assets/images/default.jpg");            
@@ -43,11 +43,17 @@ function displayCityInfo() {
 
         // store the API call results into myResults
         var myResults = response.hits;  
+        var imageURL = myResults[0].largeImageURL;
+        console.log("imageURL: ",imageURL);
 
-        $("#cityImage").attr('class', 'cityImage').css('maxWidth', '350px');       
+        $("#cityImage").css('maxWidth', '350px');       
 
         //image from API
-        $("#cityImage").attr("src", myResults[0].largeImageURL);                
+        var image = $("#cityImage").attr("src", imageURL);    
+
+        console.log("type of image: ", typeof image.src);
+        
+        
 
         // end else statement
         }     
