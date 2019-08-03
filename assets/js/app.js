@@ -19,14 +19,16 @@ $("#submitCity").on("click", function() {
     function changeTextColor (results){
       if (results <=50) {
         $("results").attr("class", "good")
-      } else if (results >=51 | <=100) {
+      } else if (results >=51 && <=100) {
         $("results").attr("class", "moderate") 
-      } else if ((results >=101 | <=150)) {
-        $("results").attr("class", "moderateUnhealthy") 
-      } else if ((results >=151 | <=200)) {
-        $("results").attr("class", "moderateUnhealthy")
-      } else if ((results >=201 | <=250)) {
-        $("results").attr("class", "unhealthy")
+      } else if (results >=101 && <=150) {
+        $("results").attr("class", "unhealthSens") 
+      } else if (results >=151 && <=200) {
+        $("results").attr("class", "Unhealthy")
+      }  else if (results >=201 && <=300) {
+        $("results").attr("class", "veryUnhealthy")
+      } else if (resutls >=301 && <=500) {
+        $("results").attr("class", "hazardous")
       }  
     }
 searchPollution();
@@ -34,7 +36,7 @@ searchPollution();
 
 //maybe need function to add to card instead of HTML?
 // $("pollutionScore").text(pollutionScoreResult)
-});
+}});
 
 //updating state abbreviation input to pull full state name from API
 function abbrState(input){
