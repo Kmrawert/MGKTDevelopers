@@ -137,6 +137,7 @@ function handleSearch() {
     searchPollution(city,state)
   ]).then(function (response){
     handleResult(response[0], response[1], response[2], response[3], response[4])
+    $('#city_input').focus()
   })
   
 }
