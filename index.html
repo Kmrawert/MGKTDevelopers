@@ -13,18 +13,21 @@
 </head>
 <body> 
     <div class="header" style="margin-top: -27px;">
-            <div style="background-image: url('https://www.terma.com/media/277931/header.png'); background-size: cover; background-color: springgreen; background-blend-mode: multiply; background-position-y: center;">
-                <div class="col s8" style="width: 65%; display: inline-block;">
-                    <h3 style="color: white; margin-right: 0px;">How Green is Your US City?</h3>
+            <div id="headerImg">
+                <div class="col s8" id="heading">
+                    <h3 style="color: white; margin-right: 0px; font-variant: small-caps;">How <div class="greenLabel" style="color: greenyellow; display: inline; font-weight: 700; text-shadow: black 2px 2px 4px;">Green</div> is Your US City?</h3>
                 </div>
-                <div class="cityState col s4" style="width: 33%; display: inline-block; margin-top: 50px;" >
+                <!-- City Field -->
+                <div class="cityState col s4">
                     <div class="input-field">
                         <input placeholder="City" id="city_input"  type="text" class="validate">
                         <label for="city_input">City</label>
                     </div>
+                    <!-- State Field -->
                     <div class="input-field">
                         <input placeholder="State" id="state_input" type="text" class="validate" maxlength="2">
                         <label for="city_input">State</label>
+                    <!-- Submit Button? -->
                         <a id="submitCity" class="waves-effect waves-light btn" style="background-color: greenyellow; color: black; font-weight: 600">Submit</a>
                     </div>
             </div>
@@ -42,25 +45,30 @@
                             <div class="card-title" id="cityName">
                                 <!-- This is where the city name text will go? -->
                             </div>
-                            <span id="stateName">
+                            <span class="card-title" id="stateName">
                                     <!-- This is where the state name text will go? -->
                             </span>
                         </div>  
                     </div>
                         <div id="cityContent">
-                            <div id="polutionScore"></div>
+                            <div id="populationScore"></div>
                             <div id="humidityScore"></div>
                             <div id="polutionScore"></div>
                             <div id="tempLowAvg"></div>
                             <div id="tempHighAvg"></div> 
-                            <div id="elecSpend"></div>  
+                            <div id="vmt"></div>  
                             <div id="gasSpend"></div> 
                             <div id="deiselSpend"></div>
+
                             <!-- LEGEND Here Polution Score (Michelle) -->
                         </div>
                     </div>
 
                 </div>
+            
+        </div>
+
+        <div id= "weather" >
             
         </div>
         
@@ -73,10 +81,12 @@
     
     </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
-</script><script type="text/javascript" src ="assets/js/app.js"></script>
-<script type="text/javascript" src ="assets/js/weather.js"></script>
-<script src="assets/js/transport.js"></script>
+<script type="text/javascript" src ="assets/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="assets/js/weather.js"></script>
+<script src="assets/js/transport.js"></script>
+<script src="assets/js/images.js"></script>
+
+
 </body>
 </html>

@@ -1,70 +1,84 @@
-$("button").on("click", function() {
-    var state = $(this).attr("data-city");
-    var searchPop = function(city) {
+$("#submitCity").on("click", function() {
+
+    var city = $('#city_input').val().trim();
+    var state = $('#state_input').val().trim();
+
+    function searchPollution() {
     var apiKey = "3204bdc9-d215-465a-bb7b-132b32d458d3"
-    var stateName = Missouri 
 
-    var queryURL = "http://api.airvisual.com/v2/cities?state=" + stateName + "&country=USA" "&key=" + apiKey
+    var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + abbrState(state) + "&country=USA&key=" + apiKey
       $.ajax({
         url: queryURL,
         method: "GET"
       })
-        .then(function(response) {
-            
-            createRow(response);
-          // Storing an array of results in the results variable
-          var results = response.data;
-            console.log(results)});
+      .then(function(response) {
+        var results = response.data.current.pollution.aqius;
+          console.log(results)});
     
     }
+searchPollution();
+console.log(abbrState(state));
+});
 
-    searchPop();})
-
-    function getWeather() {
-
-      var location = "chicago"
+//updating state abbreviation input to pull full state name from API
+function abbrState(input){
     
-      // Constructing a queryURL using the animal name
-      var queryURL = "http://api.apixu.com/v1/current.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
-     
-    
-    
-    
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // After data comes back from the request
-        .then(function (response) {
-          console.log(queryURL);
-    
-          var results = response;
-          console.log(results);
-    
-    
-          var locationName = results.location.name
-          var condition = results.condition
-          var temp_f = results.temp_f
-    
-         
-          $("#weather").html(renderMyThing(results))
-    
-    
-          function renderMyThing(response) {
-            var html = `
-              <div id="weather">
-              <h1>${results.location.name} </h1>
-              ${results.current.condition.text} <br>
-              ${results.current.temp_f} <br>
-             
-              <img src="https:${response.current.condition.icon}"> <br>
-            </div>
-        
-              `
-            return html
-          }
-    
-        })
-    
-    }
-    getWeather();
+    var states = [
+        ['Alabama', 'AL'],
+        ['Alaska', 'AK'],
+        ['Arizona', 'AZ'],
+        ['Arkansas', 'AR'],
+        ['California', 'CA'],
+        ['Colorado', 'CO'],
+        ['Connecticut', 'CT'],
+        ['Delaware', 'DE'],
+        ['Florida', 'FL'],
+        ['Georgia', 'GA'],
+        ['Hawaii', 'HI'],
+        ['Idaho', 'ID'],
+        ['Illinois', 'IL'],
+        ['Indiana', 'IN'],
+        ['Iowa', 'IA'],
+        ['Kansas', 'KS'],
+        ['Kentucky', 'KY'],
+        ['Louisiana', 'LA'],
+        ['Maine', 'ME'],
+        ['Maryland', 'MD'],
+        ['Massachusetts', 'MA'],
+        ['Michigan', 'MI'],
+        ['Minnesota', 'MN'],
+        ['Mississippi', 'MS'],
+        ['Missouri', 'MO'],
+        ['Montana', 'MT'],
+        ['Nebraska', 'NE'],
+        ['Nevada', 'NV'],
+        ['New Hampshire', 'NH'],
+        ['New Jersey', 'NJ'],
+        ['New Mexico', 'NM'],
+        ['New York', 'NY'],
+        ['North Carolina', 'NC'],
+        ['North Dakota', 'ND'],
+        ['Ohio', 'OH'],
+        ['Oklahoma', 'OK'],
+        ['Oregon', 'OR'],
+        ['Pennsylvania', 'PA'],
+        ['Rhode Island', 'RI'],
+        ['South Carolina', 'SC'],
+        ['South Dakota', 'SD'],
+        ['Tennessee', 'TN'],
+        ['Texas', 'TX'],
+        ['Utah', 'UT'],
+        ['Vermont', 'VT'],
+        ['Virginia', 'VA'],
+        ['Washington', 'WA'],
+        ['West Virginia', 'WV'],
+        ['Wisconsin', 'WI'],
+        ['Wyoming', 'WY'],
+    ];
+       input = input.toUpperCase();
+        for(i = 0; i < states.length; i++){
+            if(states[i][1] === input){
+                return(states[i][0]);
+            }
+        }    
+}
