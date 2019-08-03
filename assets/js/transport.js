@@ -24,6 +24,8 @@ $("#submitCity").on("click", function() {
     
     row.prepend(newCard);
     }
+
+    
    getWeather(city).then(handleResult);
     
 

@@ -40,17 +40,15 @@ function getWeather(location) {
                 temp_f,
                 humidity
             }
-            $("#cityResult").attr("display", "block")
-            $("#humidityScore").html(renderMyThing(results))
+
         })
 }
 function renderWeather(weather) {
     var html = `
             <div>
             ${weather.condition.text} <br>
-            ${weather.temp_f} <br>
-            
-           
+            <strong>Temperature: </strong> ${weather.temp_f} <strong>&#176F</strong><br>
+            <strong> Humidity: </strong> ${weather.humidity}%<br>
             <img src="https:${weather.condition.icon}"> <br>
           </div>
             `
