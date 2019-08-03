@@ -13,11 +13,27 @@ $("#submitCity").on("click", function() {
       })
       .then(function(response) {
         var results = response.data.current.pollution.aqius;
-          console.log(results)});
+          console.log("This is the Air Quality Index: " + results)});
     
+
+    function changeTextColor (results){
+      if (results <=50) {
+        $("results").attr("class", "good")
+      } else if (results >=51 | <=100) {
+        $("results").attr("class", "moderate") 
+      } else if ((results >=101 | <=150)) {
+        $("results").attr("class", "moderateUnhealthy") 
+      } else if ((results >=151 | <=200)) {
+        $("results").attr("class", "moderateUnhealthy")
+      } else if ((results >=201 | <=250)) {
+        $("results").attr("class", "unhealthy")
+      }  
     }
 searchPollution();
-console.log(abbrState(state));
+
+
+//maybe need function to add to card instead of HTML?
+// $("pollutionScore").text(pollutionScoreResult)
 });
 
 //updating state abbreviation input to pull full state name from API
@@ -81,4 +97,12 @@ function abbrState(input){
                 return(states[i][0]);
             }
         }    
+}
+function renderPollution() {
+  var html = `
+          <div>
+          $("results").text <br>
+          </div>
+          `
+  return html;
 }
