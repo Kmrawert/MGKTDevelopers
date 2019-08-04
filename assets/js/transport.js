@@ -21,7 +21,7 @@ $("#submitCity").on("click", function () {
     
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
-    title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-11px'});
+    title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-10px'});
     var pollutionLabel = $('<div>').text('AQI Score: ' + pollutionOBj).addClass('labelPop', changeTextColor(pollutionOBj));
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
     var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop');
