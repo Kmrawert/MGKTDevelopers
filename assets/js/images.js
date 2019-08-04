@@ -20,7 +20,7 @@ function displayCityInfo() {
 
     // Creating an AJAX call for the specific city 
     console.log(queryURL);
-    $.ajax({
+    return $.ajax({
         url: queryURL,
         method: "GET"
     })
@@ -47,10 +47,14 @@ function displayCityInfo() {
         $("#cityImage").attr('class', 'cityImage').css('maxWidth', '350px');       
 
         //image from API
-        $("#cityImage").attr("src", myResults[0].largeImageURL);                
+        var imageURL = myResults[0].largeImageURL;              
 
         // end else statement
-        }     
+        }   
+        console.log(myResults);
+        return { 
+            imageURL
+        } 
         
     // function(response) end
     });

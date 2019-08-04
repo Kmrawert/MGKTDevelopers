@@ -9,43 +9,30 @@ $("#submitCity").on("click", function () {
   var state = $('#state_input').val().trim();
 
   // var population = $('#populationScore').val().trim();
-  var cityTitle = $('#cityName').text(city + ',');
-  var stateTitle = $('#stateName').text(state);
+  var cityTitle = $('#cityName').addClass('card-title').text(city + ', ');
+  var stateTitle = $('#stateName').addClass('card-title').text(state);
   var title = $('<h3>').attr('id', 'imageCity');
   title.append(cityTitle, stateTitle);
+  //  cityTitle.text() + stateTitle.text();
   // returns weather function and population results and places in new card div
-  function handleResult(image, gas, cityVMT, weather, popObj, pollutionOBj) {
-    console.log(weather);
+  function handleResult(image, gas, cityVMT, weather, popObj) {
+    console.log(image);
     var weatherHTML = renderWeather(weather);
     console.log(renderWeather(weather));
     
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-11px'});
-    var pollutionLabel = $('<div>').text('AQI Score: ' + pollutionOBj).addClass('labelPop', changeTextColor(pollutionOBj));
+    console.log(title);
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
     var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop');
     var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop');
+    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.ntlGasAvg + ' gallons').addClass('labelPop');
     var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop');
+    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.ntlDieselAvg + ' gallons').addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
-    function changeTextColor(pollutionOBj) {
-      if (pollutionOBj <= 50) {
-        return "good"
-      } else if (pollutionOBj >= 51 && pollutionOBj <= 100) {
-        return "moderate"
-      } else if (pollutionOBj >= 101 && pollutionOBj <= 150) {
-        return "unhealthSens"
-      } else if (pollutionOBj >= 151 && pollutionOBj <= 200) {
-        return "Unhealthy"
-      } else if (pollutionOBj >= 201 && pollutionOBj <= 300) {
-        return "veryUnhealthy"
-      } else if (pollutionOBj >= 301 && pollutionOBj <= 500) {
-        return "hazardous"
-      };
-    }
-
-    newCard.append(title, '<br>', popLabel, pollutionLabel, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
+    newCard.append(title, '<br>', popLabel, cityVMTLabel, gasLabel, dieselLabel, weatherVal);
 
     row.prepend(newCard);
     }
@@ -92,10 +79,6 @@ $("#submitCity").on("click", function () {
         var cityVMT = response.result[city].city_vmt_estimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var ntlAvgEst = response.result[city].natl_avg_vmt_estimate;
         var ntlPerCap = response.result[city].natl_per_capita_vmt_estimate;
-
-        console.log(cityVMT);
-        console.log(ntlAvgEst);
-        console.log(ntlPerCap);
         
 
         return {
@@ -133,11 +116,10 @@ $("#submitCity").on("click", function () {
     getVMT(city),
     getWeather(city),
     // .then(handleResult);
-    searchCityPop(city),
-    searchPollution(city, state)
+    searchCityPop(city)
   ]).then(function (response){
     console.log(response);
-    handleResult(response[0], response[1], response[2], response[3], response[4], response[5])
+    handleResult(response[0], response[1], response[2], response[3], response[4])
   })
   
 })
