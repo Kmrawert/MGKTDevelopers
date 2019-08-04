@@ -14,30 +14,35 @@ function searchPollution(city, state) {
     method: "GET"
   })
     .then(function (response) {
-      var results = response.data.current.pollution.aqius;
-      console.log("This is the Air Quality Index: " + results)
-      return results;
+      var results = response.data;
+      var aqi = response.data.current.pollution.aqius;
+      console.log("This is the Air Quality Index: " + aqi)
+      console.log(results);
+
+      return aqi;
+      
+
     });
 };
 
 /**
  * This function is returning the class name to the Air Quality Index Score per city, ST
  *
- * @param {number} results
+ * @param {number} aqi
  * @returns {string}
  */
-function changeTextColor(results) {
-  if (results <= 50) {
+function changeTextColor(aqi) {
+  if (aqi <= 50) {
     return "good"
-  } else if (results >= 51 && results <= 100) {
+  } else if (aqi >= 51 && aqi <= 100) {
     return "moderate"
-  } else if (results >= 101 && results <= 150) {
+  } else if (aqi >= 101 && aqi <= 150) {
     return "unhealthSens"
-  } else if (results >= 151 && results <= 200) {
+  } else if (aqi >= 151 && aqi <= 200) {
     return "Unhealthy"
-  } else if (results >= 201 && results <= 300) {
+  } else if (aqi >= 201 && aqi <= 300) {
     return "veryUnhealthy"
-  } else if (results >= 301 && results <= 500) {
+  } else if (aqi >= 301 && aqi <= 500) {
     return "hazardous"
   };
 }
