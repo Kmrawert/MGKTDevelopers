@@ -101,22 +101,28 @@ div#heading.col.s8 {
     display: inline-block;
 }
 .good {
-    color: #00E400;
+    background-color: #00E400;
+    padding: 5px;
 }
 .moderate {
-    color: #FFFF00;
+    background-color: #FFFF00;
+    padding: 5px;
 }
 .unhealthSens {
-    color: #FF7E00;
+    background-color: #FF7E00;
+    padding: 5px;
 }
 .unhealthy {
-    color: #FF0000;
+    background-color: #FF0000;
+    padding: 5px;
 }
 .veryUnhealthy {
-    color: rgb(143, 63, 151);
+    background-color: rgb(143, 63, 151);
+    padding: 5px;
 }
 .hazardous {
-    color: #7E0023;
+    background-color: #7E0023;
+    padding: 5px;
 }
 #aqiDesc {
     text-align: left;
