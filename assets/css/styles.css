@@ -22,7 +22,7 @@ body {
 #headerImg {
     background-image: url(https://www.petrol.eu/binaries/content/gallery/skupina-petrol-eng/2018/business-solutions/solutions/generation-of-electricity-from-wind-energy/1012x569_02_07-1_en.jpg);
     padding-bottom: 30px;
-    background-color: springgreen;
+    background-color: rgb(0,255,127, 0.8);
     background-blend-mode: multiply;
     background-attachment: fixed;
     background-repeat: no-repeat;

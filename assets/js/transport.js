@@ -15,12 +15,9 @@ $("#submitCity").on("click", function () {
   title.append(cityTitle, stateTitle);
   // returns weather function and population results and places in new card div
   function handleResult(image, gas, cityVMT, weather, popObj, pollutionOBj) {
-    console.log(weather);
     var aqiDesc = $('<p>').attr('id', 'aqiDesc').text("The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.");
     //var aqiReveal = aqiDesc[0].innerHTML;
-    console.log(aqiDesc[0].innerHTML);
     var weatherHTML = renderWeather(weather);
-    console.log(renderWeather(weather));
      
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
@@ -119,6 +116,22 @@ $('.aqi').mouseover(function() {
           }
         }
       )};
+
+      function emissions(state) {
+        var queryURL = "https://developer.nrel.gov/api/cleap/v1/state_co2_emissions?state_abbr=" + state + "&type=transportation&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
+        return $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function (response) {
+            var emissionsState = response.result[state].data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            console.log(emissionsState);
+    
+            return {
+              emissionsState
+            }
+          }
+        )};
   
   Promise.all([
 
