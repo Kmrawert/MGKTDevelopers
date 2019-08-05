@@ -16,40 +16,34 @@ $("#submitCity").on("click", function () {
   // returns weather function and population results and places in new card div
   function handleResult(image, gas, cityVMT, weather, popObj, pollutionOBj) {
     console.log(weather);
+    var aqiDesc = $('<p>').attr('id', 'aqiDesc').text("The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.");
+    //var aqiReveal = aqiDesc[0].innerHTML;
+    console.log(aqiDesc[0].innerHTML);
     var weatherHTML = renderWeather(weather);
     console.log(renderWeather(weather));
-    
+     
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-11px'});
     var pollutionLabel = $('<div>').text('AQI Score: ' + pollutionOBj).addClass('labelPop aqi');
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop population');
-    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
+    var cityVMTLabel = $('<div>').text('Vehicle Miles Traveled: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
     var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop gas');
     var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop diesel');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
-    function changeTextColor(pollutionOBj) {
-      if (pollutionOBj <= 50) {
-        return "good"
-      } else if (pollutionOBj >= 51 && pollutionOBj <= 100) {
-        return "moderate"
-      } else if (pollutionOBj >= 101 && pollutionOBj <= 150) {
-        return "unhealthSens"
-      } else if (pollutionOBj >= 151 && pollutionOBj <= 200) {
-        return "Unhealthy"
-      } else if (pollutionOBj >= 201 && pollutionOBj <= 300) {
-        return "veryUnhealthy"
-      } else if (pollutionOBj >= 301 && pollutionOBj <= 500) {
-        return "hazardous"
-      };
-    }
+   
+  
 
-    newCard.append(title, '<br>', popLabel, pollutionLabel, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
+    newCard.append(title, '<br>', popLabel, pollutionLabel, aqiDesc, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
 
     row.prepend(newCard);
     }
-
+$('.aqi').mouseover(function() {
+      $('#aqiDesc').css('fontSize', '8px');
+    }).mouseout(function() {
+      $('#aqiDesc').css('fontSize', '0px');
+    });
     
    getWeather(city).then(handleResult);
     

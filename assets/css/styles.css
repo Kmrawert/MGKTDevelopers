@@ -2,10 +2,18 @@ h3 {
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     padding: 20px;
+    color: white; 
+    margin-right: 0px; 
+    font-variant: all-petite-caps;
 }
 #about {
     text-align: center;
     margin-top: -20px;
+}
+.greenLabel {
+    display: inline; 
+    font-weight: 700; 
+    border-bottom: greenyellow 2px solid;
 }
 body {
     font-family: 'Quicksand', sans-serif;
@@ -26,7 +34,6 @@ h3#imageCity {
     background-color: rgb(0,255,127, 0.5);
     background-blend-mode: multiply;
     font-weight: 700;
-    border-radius: 5px 5px 0px 0px;
     margin-bottom: 0px;
 
 }
@@ -75,6 +82,7 @@ input:focus {
     padding-bottom: 20px;
     font-weight: 700 !important;
     color: white;
+    text-shadow: black 2px 2px 4px;
 }
 #stateName {
     font-size: 24px;
@@ -109,6 +117,12 @@ div#heading.col.s8 {
 }
 .hazardous {
     color: #7E0023;
+}
+#aqiDesc {
+    text-align: left;
+    font-size: 8px;
+    color: grey;
+    
 }
 /* 
 nav bar to be blue

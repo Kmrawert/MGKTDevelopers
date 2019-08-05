@@ -35,10 +35,12 @@ function getWeather(location) {
             console.log(temp_f);
             var humidity = results.current.humidity;
             console.log(humidity);
+            var windMPH = results.current.wind_mph;
             return {
                 condition,
                 temp_f,
-                humidity
+                humidity,
+                windMPH
             }
 
         })
@@ -49,6 +51,7 @@ function renderWeather(weather) {
             ${weather.condition.text} <br>
             <strong>Temperature: </strong> ${weather.temp_f} <strong>&#176F</strong><br>
             <strong> Humidity: </strong> ${weather.humidity}%<br>
+            <strong> Wind: </strong> ${weather.windMPH}mph<br>
             <img src="https:${weather.condition.icon}"> <br>
           </div>
             `
