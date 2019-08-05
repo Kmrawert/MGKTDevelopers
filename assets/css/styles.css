@@ -88,7 +88,7 @@ input:focus {
     font-size: 24px;
 }
 .col {
-    text-align: center;
+    /* text-align: center; */
 }
 .populationScore, .weather, .labelPop, .humidityScore, .polutionScore, .tempLowAvg, .tempHighAvg, .elecSpend, .gasSpend, .deiselSpend {
     text-align: left;
@@ -130,12 +130,6 @@ div#heading.col.s8 {
     color: grey;
     
 }
-/* 
-nav bar to be blue
-nav bar buttons to be centered/equally spaced on bar
-
-center footer
-*/
 @media only screen and (max-width: 925px) {
     #headerImg {
         background-position-y: -200px;
@@ -148,5 +142,4 @@ center footer
     .col.s6 {
         width: 100% !important;
     }
-    
 }

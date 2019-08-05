@@ -7,10 +7,8 @@
 
 function displayCityInfo() {
 
-    
     var city = $("#city_input").val();
    
-
     // my API key
     var API_key = "13148120-b768c83f14822b5847fe811cf";
 
@@ -32,7 +30,7 @@ function displayCityInfo() {
         if (response.totalHits === 0) {
             
 
-            $("#cityImage").attr('class', 'cityImage').css('maxWidth', '350px');
+            $("#cityImage").css('maxWidth', '350px');
 
              //default image 
              $("#cityImage").attr("src", "assets/images/default.jpg");            
@@ -43,8 +41,10 @@ function displayCityInfo() {
 
         // store the API call results into myResults
         var myResults = response.hits;  
+        var imageURL = myResults[0].largeImageURL;
+        console.log("imageURL: ",imageURL);
 
-        $("#cityImage").attr('class', 'cityImage').css('maxWidth', '350px');       
+        $("#cityImage").css('maxWidth', '350px');       
 
         //image from API
         var imageURL = myResults[0].largeImageURL;              
@@ -54,13 +54,10 @@ function displayCityInfo() {
         console.log(myResults);
         return { 
             imageURL
-        } 
-        
+        }  
     // function(response) end
     });
-
 // end displayCityInfo()
 }
-
 // Add a click event listener to the submit button with id of "submit city"
 $(document).on("click", "#submitCity", displayCityInfo);

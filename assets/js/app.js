@@ -20,8 +20,6 @@ function searchPollution(city, state) {
       console.log(results);
 
       return aqi;
-      
-
     });
 };
 
@@ -46,7 +44,6 @@ function changeTextColor(aqi) {
     return "hazardous"
   };
 }
-
 
 /**
  * updating state abbreviation input to pull full state name from API
@@ -116,4 +113,3 @@ function abbrState(input) {
     }
   }
 }
-
