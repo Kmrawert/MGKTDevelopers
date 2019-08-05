@@ -35,10 +35,18 @@ function getWeather(location) {
             console.log(temp_f);
             var humidity = results.current.humidity;
             console.log(humidity);
+            var windMPH = results.current.wind_mph;
+            var uv = results.current.uv;
+            var latitude = results.location.lat;
+            var longitude = results.location.lon;
+            var latLon = {latitude, longitude};
             return {
                 condition,
                 temp_f,
-                humidity
+                humidity,
+                windMPH,
+                uv,
+                latLon
             }
 
         })
@@ -49,6 +57,8 @@ function renderWeather(weather) {
             ${weather.condition.text} <br>
             <strong>Temperature: </strong> ${weather.temp_f} <strong>&#176F</strong><br>
             <strong> Humidity: </strong> ${weather.humidity}%<br>
+            <strong> Wind: </strong> ${weather.windMPH}mph<br>
+            <strong> UV: </strong> ${weather.uv}<br>
             <img src="https:${weather.condition.icon}"> <br>
           </div>
             `

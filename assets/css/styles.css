@@ -2,25 +2,40 @@ h3 {
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     padding: 20px;
+    color: white; 
+    margin-right: 0px; 
+    font-variant: all-petite-caps;
 }
 #about {
     text-align: center;
     margin-top: -20px;
+}
+.greenLabel {
+    display: inline; 
+    font-weight: 700; 
+    border-bottom: greenyellow 2px solid;
 }
 body {
     font-family: 'Quicksand', sans-serif;
     background-color: #e1e1e1;
 }
 #headerImg {
-    background-image: url(https://www.terma.com/media/277931/header.png);
+    background-image: url(https://intpolicydigest.org/wp-content/uploads/2018/07/1529559318974.jpg);
     padding-bottom: 30px;
-    background-color: springgreen;
+    background-color: rgb(0,255,127, 0.8);
     background-blend-mode: multiply;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position-x: center; 
     background-size: cover;
-    background-position-y: 30%;
+    background-position-y: -300px;
+}
+h3#imageCity {
+    background-color: rgb(0,255,127, 0.5);
+    background-blend-mode: multiply;
+    font-weight: 700;
+    margin-bottom: 0px;
+
 }
 .row {
     margin-left: 20px !important;
@@ -42,6 +57,9 @@ div.cityState.col.s4 {
     width: 80%;
     margin: auto;
 }
+.validate.valid {
+    background-color: transparent !important;
+}
 input:focus {
     border-bottom: 1px solid greenyellow !important;
     box-shadow: 0 1px 0 0 greenyellow !important;
@@ -62,6 +80,9 @@ input:focus {
     padding-right: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
+    font-weight: 700 !important;
+    color: white;
+    text-shadow: black 2px 2px 4px;
 }
 #stateName {
     font-size: 24px;
@@ -80,24 +101,40 @@ div#heading.col.s8 {
     display: inline-block;
 }
 .good {
-    color: #00E400;
+    background-color: #00E400;
+    padding: 5px;
 }
 .moderate {
-    color: #FFFF00;
+    background-color: #FFFF00;
+    padding: 5px;
 }
 .unhealthSens {
-    color: #FF7E00;
+    background-color: #FF7E00;
+    padding: 5px;
 }
 .unhealthy {
-    color: #FF0000;
+    background-color: #FF0000;
+    padding: 5px;
 }
 .veryUnhealthy {
-    color: rgb(143, 63, 151);
+    background-color: rgb(143, 63, 151);
+    padding: 5px;
 }
 .hazardous {
-    color: #7E0023;
+    background-color: #7E0023;
+    padding: 5px;
 }
-
+#aqiDesc {
+    text-align: left;
+    font-size: 8px;
+    color: grey;
+    
+}
+@media only screen and (max-width: 925px) {
+    #headerImg {
+        background-position-y: -200px;
+    }
+}
 @media only screen and (max-width: 500px) {
     div#heading.col.s8 {
         width: 100% !important;

@@ -1,63 +1,46 @@
 var row = $('.row');
 
-$('#city_input').focus()
-
-function handleSearch() {
+// Event listener for all button elements 
+$("#submitCity").on("click", function () {
   // In this case, the "this" keyword refers to the button that was clicked
+  
   // var cityImg = $('#cityImage');
   var city = $('#city_input').val().trim();
   var state = $('#state_input').val().trim();
 
-  $('#city_input').val("")
-
-  function uppercase(string) {
-    return string.substring(0,1).toUpperCase()+string.substring(1,string.lenght).toLowerCase()
-  }
-
-  city = city.split(" ").map(uppercase).join(" ");
-  console.log(city)
-
-  var state = $('#state_input').val().trim().toUpperCase();
- $('#state_input').val("")
-  
   // var population = $('#populationScore').val().trim();
-  var cityTitle = $('#cityName').text(city + ',');
-  var stateTitle = $('#stateName').text(state);
+  var cityTitle = $('#cityName').addClass('card-title').text(city + ', ');
+  var stateTitle = $('#stateName').addClass('card-title').text(state);
   var title = $('<h3>').attr('id', 'imageCity');
   title.append(cityTitle, stateTitle);
+  //  cityTitle.text() + stateTitle.text();
   // returns weather function and population results and places in new card div
-
-  function handleResult(image, cityVMT, gas, weather, popObj, pollutionOBj) {
-    // var aqiDesc = $('<p>').attr('id', 'aqiDesc').text("The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.");
-    //var aqiReveal = aqiDesc[0].innerHTML;
-
+  function handleResult(image, gas, cityVMT, weather, popObj) {
+    console.log(image);
     var weatherHTML = renderWeather(weather);
+    console.log(renderWeather(weather));
     
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
-
     title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-11px'});
-    var pollutionScore = $('<div>').text('Air Quality Index: ').addClass('labelPop');
-    var aqi = $('<strong>').text(pollutionOBj).addClass(changeTextColor(pollutionOBj))
-      pollutionScore.append(aqi);
-    var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop population');
-    //var cityVMTLabel = $('<div>').text('Vehicle Miles Traveled: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
-    var gasLabel = $('<div>').text('Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop gas');
-    var dieselLabel = $('<div>').text('Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop diesel');
+    console.log(title);
+    var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop');
+    var cityVMTLabel = $('<div>').text('City VMT: ' + cityVMT.cityVMT + ' miles').addClass('labelPop');
+    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop');
+    var ntlGasLabel = $('<div>').text('National Average Gas Use: ' + gas.ntlGasAvg + ' gallons').addClass('labelPop');
+    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop');
+    var ntlDeiselLabel = $('<div>').text('National Average Diesel Usage: ' + gas.ntlDieselAvg + ' gallons').addClass('labelPop');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
-    newCard.append(title, '<br>', popLabel, pollutionScore, gasLabel,dieselLabel, weatherVal);
+    newCard.append(title, '<br>', popLabel, cityVMTLabel, gasLabel, dieselLabel, weatherVal);
 
     row.prepend(newCard);
     }
-$('.aqi').mouseover(function() {
-      $('#aqiDesc').css('fontSize', '8px');
-    }).mouseout(function() {
-      $('#aqiDesc').css('fontSize', '0px');
-    });
+
     
    getWeather(city).then(handleResult);
     
+
   function searchCityPop(city) {
     var queryURL = "https://developer.nrel.gov/api/cleap/v1/energy_expenditures_and_ghg_by_sector?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
     //var queryURL = "https://developer.nrel.gov/api/cleap/v1/energy_expenditures_and_ghg_by_sector?city=" + city + "&state_abbr=" + state + "&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
@@ -75,13 +58,15 @@ $('.aqi').mouseover(function() {
         var ghgCommerical = response.result[city].commercial.gas_lb_ghg;
         var ghgResidential = response.result[city].residential.gas_lb_ghg;
         var ghgIndustrial = response.result[city].industrial.gas_lb_ghg;
-        var ghg = ghgCommerical + ghgResidential + ghgIndustrial.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        var ghg = ghgCommerical + ghgResidential + ghgIndustrial;
         console.log(ghg);
         console.log(pop);
         return {
           pop,
           ghg
         }
+       
+
       });
   }
   function getVMT(city) {
@@ -94,11 +79,8 @@ $('.aqi').mouseover(function() {
         var cityVMT = response.result[city].city_vmt_estimate.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var ntlAvgEst = response.result[city].natl_avg_vmt_estimate;
         var ntlPerCap = response.result[city].natl_per_capita_vmt_estimate;
-
-        console.log(cityVMT);
-        console.log(ntlAvgEst);
-        console.log(ntlPerCap);
         
+
         return {
           cityVMT
         }
@@ -112,12 +94,12 @@ $('.aqi').mouseover(function() {
         method: "GET"
       })
         .then(function (response) {
-          console.log(response);
           var cityDieselUse = response.result[city].city_fuel_use.diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           var cityGasUse = response.result[city].city_fuel_use.gas_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           var ntlDieselAvg = response.result[city].natl_avg_diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           var ntlGasAvg = response.result[city].natl_avg_gas_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           
+  
           return {
             cityDieselUse,
             cityGasUse,
@@ -126,7 +108,7 @@ $('.aqi').mouseover(function() {
           }
         }
       )};
-
+  
   Promise.all([
 
     displayCityInfo(),
@@ -134,27 +116,10 @@ $('.aqi').mouseover(function() {
     getVMT(city),
     getWeather(city),
     // .then(handleResult);
-    searchCityPop(city),
-
-    searchPollution(city, state)
+    searchCityPop(city)
   ]).then(function (response){
     console.log(response);
-    handleResult(response[0], response[1], response[2], response[3], response[4], response[5])
-    $('#city_input').focus()
+    handleResult(response[0], response[1], response[2], response[3], response[4])
   })
-}
-
-function handleEnteronSearch (event){
-  if (event.which === 13){
-    handleSearch()
-  }
-}
-
-// Event listener for all button elements 
-$("#submitCity").on("click",handleSearch)
-$('#state_input').on("keypress",handleEnteronSearch)
-$('#city_input').on("keypress",function (event){
-  if (event.which === 13){
-    $('#state_input').focus()
-  }
+  
 })

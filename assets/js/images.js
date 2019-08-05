@@ -7,10 +7,8 @@
 
 function displayCityInfo() {
 
-    
     var city = $("#city_input").val();
    
-
     // my API key
     var API_key = "13148120-b768c83f14822b5847fe811cf";
 
@@ -20,7 +18,7 @@ function displayCityInfo() {
 
     // Creating an AJAX call for the specific city 
     console.log(queryURL);
-    $.ajax({
+    return $.ajax({
         url: queryURL,
         method: "GET"
     })
@@ -49,20 +47,17 @@ function displayCityInfo() {
         $("#cityImage").css('maxWidth', '350px');       
 
         //image from API
-        var image = $("#cityImage").attr("src", imageURL);    
-
-        console.log("type of image: ", typeof image.src);
-        
-        
+        var imageURL = myResults[0].largeImageURL;              
 
         // end else statement
-        }     
-        
+        }   
+        console.log(myResults);
+        return { 
+            imageURL
+        }  
     // function(response) end
     });
-
 // end displayCityInfo()
 }
-
 // Add a click event listener to the submit button with id of "submit city"
 $(document).on("click", "#submitCity", displayCityInfo);
