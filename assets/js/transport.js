@@ -26,7 +26,7 @@ $("#submitCity").on("click", function () {
     var aqi = $('<strong>').text(pollutionOBj).addClass(changeTextColor(pollutionOBj))
     pollutionScore.append(aqi);
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop population');
-    var cityVMTLabel = $('<div>').text('Vehicle Miles Traveled: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
+    //var cityVMTLabel = $('<div>').text('Vehicle Miles Traveled: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
     var gasLabel = $('<div>').text('Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop gas');
     var dieselLabel = $('<div>').text('Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop diesel');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
@@ -34,7 +34,7 @@ $("#submitCity").on("click", function () {
    
   
 
-    newCard.append(title, '<br>', popLabel, pollutionScore, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
+    newCard.append(title, '<br>', popLabel, pollutionScore, gasLabel,dieselLabel, weatherVal);
 
     row.prepend(newCard);
     }
