@@ -62,7 +62,7 @@ $('.aqi').mouseover(function() {
         var ghgCommerical = response.result[city].commercial.gas_lb_ghg;
         var ghgResidential = response.result[city].residential.gas_lb_ghg;
         var ghgIndustrial = response.result[city].industrial.gas_lb_ghg;
-        var ghg = ghgCommerical + ghgResidential + ghgIndustrial;
+        var ghg = ghgCommerical + ghgResidential + ghgIndustrial.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         console.log(ghg);
         console.log(pop);
         return {
