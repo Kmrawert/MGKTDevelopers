@@ -15,24 +15,26 @@ $("#submitCity").on("click", function () {
   title.append(cityTitle, stateTitle);
   // returns weather function and population results and places in new card div
   function handleResult(image, gas, cityVMT, weather, popObj, pollutionOBj) {
-    var aqiDesc = $('<p>').attr('id', 'aqiDesc').text("The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.");
+    // var aqiDesc = $('<p>').attr('id', 'aqiDesc').text("The AQI is an index for reporting daily air quality. It tells you how clean or polluted your air is, and what associated health effects might be a concern for you. The AQI focuses on health effects you may experience within a few hours or days after breathing polluted air.");
     //var aqiReveal = aqiDesc[0].innerHTML;
     var weatherHTML = renderWeather(weather);
-     
+    
     newCard = $('<div>');
     newCard.addClass('col').addClass('s6').addClass('card').attr('col', '6');
     title.css({'background-image': 'url(' + image.imageURL + ')', 'background-size': 'cover', 'background-position-y': 'center', 'margin-top': '0px', 'margin-left': '-11px', 'margin-right': '-11px'});
-    var pollutionLabel = $('<div>').text('AQI Score: ' + pollutionOBj).addClass('labelPop aqi');
+    var pollutionScore = $('<div>').text('Air Quality Index: ').addClass('labelPop');
+    var aqi = $('<strong>').text(pollutionOBj).addClass(changeTextColor(pollutionOBj))
+    pollutionScore.append(aqi);
     var popLabel = $('<div>').text('Population: ' + popObj.pop).addClass('labelPop population');
     var cityVMTLabel = $('<div>').text('Vehicle Miles Traveled: ' + cityVMT.cityVMT + ' miles').addClass('labelPop vmt');
-    var gasLabel = $('<div>').text('City Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop gas');
-    var dieselLabel = $('<div>').text('City Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop diesel');
+    var gasLabel = $('<div>').text('Gas Usage: ' + gas.cityGasUse + ' gallons').addClass('labelPop gas');
+    var dieselLabel = $('<div>').text('Diesel Usage: ' + gas.cityDieselUse + ' gallons').addClass('labelPop diesel');
     var weatherVal = $('<div>').html(weatherHTML).addClass('weather');
     
    
   
 
-    newCard.append(title, '<br>', popLabel, pollutionLabel, aqiDesc, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
+    newCard.append(title, '<br>', popLabel, pollutionScore, cityVMTLabel, gasLabel,dieselLabel, weatherVal);
 
     row.prepend(newCard);
     }
@@ -102,6 +104,7 @@ $('.aqi').mouseover(function() {
         method: "GET"
       })
         .then(function (response) {
+          console.log(response);
           var cityDieselUse = response.result[city].city_fuel_use.diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           var cityGasUse = response.result[city].city_fuel_use.gas_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           var ntlDieselAvg = response.result[city].natl_avg_diesel_gal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -117,21 +120,7 @@ $('.aqi').mouseover(function() {
         }
       )};
 
-      function emissions(state) {
-        var queryURL = "https://developer.nrel.gov/api/cleap/v1/state_co2_emissions?state_abbr=" + state + "&type=transportation&api_key=747TiEoH0cbzahNKEvsVDGRUMhmYF1hJzeGlHaqx";
-        return $.ajax({
-          url: queryURL,
-          method: "GET"
-        })
-          .then(function (response) {
-            var emissionsState = response.result[state].data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            console.log(emissionsState);
-    
-            return {
-              emissionsState
-            }
-          }
-        )};
+      
   
   Promise.all([
 
