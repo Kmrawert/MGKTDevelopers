@@ -41,6 +41,7 @@ function displayCityInfo() {
 
         // store the API call results into myResults
         var myResults = response.hits;  
+        console.log(myResults);
         var imageURL = myResults[0].largeImageURL;
         console.log("imageURL: ",imageURL);
 
