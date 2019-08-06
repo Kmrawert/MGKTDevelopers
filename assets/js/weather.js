@@ -14,7 +14,7 @@ function handleSubmit(event) {
 
 function getWeather(location) {
     // Constructing a queryURL using the animal name
-    var queryURL = "http://api.apixu.com/v1/current.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
+    var queryURL = "https://api.apixu.com/v1/current.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
     // var queryURL = "http://api.apixu.com/v1/history.json?key=713c9ccd7baa43fe92d14242192507&q=" + location
 
     return $.ajax({

@@ -8,7 +8,7 @@
 function searchPollution(city, state) {
   var apiKey = "3204bdc9-d215-465a-bb7b-132b32d458d3"
 
-  var queryURL = "http://api.airvisual.com/v2/city?city=" + city + "&state=" + abbrState(state) + "&country=USA&key=" + apiKey
+  var queryURL = "https://api.airvisual.com/v2/city?city=" + city + "&state=" + abbrState(state) + "&country=USA&key=" + apiKey
   return $.ajax({
     url: queryURL,
     method: "GET"
